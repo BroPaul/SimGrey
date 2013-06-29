@@ -1,0 +1,12 @@
+body{font-family:"Microsoft Yahei",SimSun}
+h1{position:relative}
+#blog{margin-bottom:-8px;width:300px}
+#main{_overflow:hidden;_padding:0}
+#comment-template{_margin-bottom:0;_padding:0 30px}
+#comment{overflow:auto;_width:90%}
+.comment-meta{_float:none;_display:block;_margin-top:-16px}
+.comment_text{_margin-top:5px}
+.reply{padding-bottom:1px;_right:40px}
+#submit{vertical-align:-3px;padding:3px;line-height:12px}
+#cancel-comment-reply-link{padding:2px;vertical-align:1px}
+#ie6{background:#2AD;padding-bottom:2px;text-align:center;color:snow}

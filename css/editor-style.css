@@ -1,0 +1,36 @@
+/*
+Theme Name: SimGrey
+Description: Used to style the TinyMCE editor.
+*/
+
+html .mceContentBody {max-width:620px}
+body{color:#333;font-size:13px;font-family:"Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","Hiragino Sans GB W3","Microsoft YaHei",SimSun,sans-serif;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:none;line-height:1.65;margin:0 0 10px 0;-webkit-text-size-adjust:none;word-break:break-word}
+h3,h4,h5,h6{color:#333;line-height:2;font-weight:normal}
+h3{font-size:18px;border-left:5px solid #2AD;margin:1em 0}
+h4{border-left:3px solid #2AD}
+h4,h5,h6{font-size:16px}
+hr{margin:1em 0;clear:both;color:#EEE;border:1px solid #EEE}
+strong,b{font-weight:bold}
+cite,i{font-style:italic}
+em{border-bottom:1px dashed #333;font-style:normal}
+em a:hover{text-decoration:none !important}
+abbr{border-bottom:1px dotted #333}
+code,pre,kbd{font-family:Menlo,Monaco,"Courier New","Hiragino Sans GB","Hiragino Sans GB W3","Microsoft Yahei",SimSun,monospace;border:1px solid #DDD;border-left:3px solid #DDD;margin:0 2px;background:none;border-radius:3px}
+pre{overflow-x:auto;margin:1em 0;width:95%;padding:1em;word-wrap:normal}
+kbd{padding:0 2px;border-right-width:2px;border-bottom-width:3px;border-left-width:1px;background:#F9F9F9}
+code{line-height:1em;word-break:break-all;padding:0 2px}
+small,small a{font-size:11px}
+q,blockquote{border:1px dashed #DDD;padding:0.5em 1.5em;margin:2em 1em;position:relative}
+q::before,blockquote::before{content:"”";font-size:100px;position:absolute;top:-50px;right:0;color:#E5E5E5}
+del{color:#999}
+a{color:#2AD;text-decoration:none;margin:0 0.4em}
+a:hover{text-decoration:underline;color:#D66}
+body p{margin:1em 0}
+ul,ol{padding-left:2.5em;border-left:3px solid #DDD;margin:1em 0 1em 0.5em}
+ul{list-style-type:square}
+ol{list-style-type:decimal}
+li{margin:0.6em 0}
+td{border:1px solid #DDD;padding:2px 5px}
+table{border:2px solid #CCC;border-collapse:collapse;margin:1em auto}
+img{margin:1em 0;width:auto;max-width:620px;height:auto;max-height:550px;border:1px solid #F5F5F5;padding:2px}
+del{color:#777}
