@@ -14,9 +14,9 @@
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <link rel="pingback" href="<?php bloginfo('pingback_url')?>" />
 <link rel="alternate" type="application/rss+xml" title="订阅 <?php bloginfo('name');?>" href="<?php echo $blogOption['feed']?>" />
-<?php wp_head()?>
 <script type="text/javascript" src="http://lib.sinaapp.com/js/jquery/1.8.3/jquery.min.js"></script>
 <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/javascript.js"></script>
+<?php wp_head()?>
 </head>
 <body <?php body_class()?>>
 <div id="header" role="banner" class="site-header">
