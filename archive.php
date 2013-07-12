@@ -15,12 +15,11 @@
 </h2>
 <?php if(have_posts()):?>
 <?php while(have_posts()):the_post();?>
-<div class="entry hentry" itemprop="blogpost" itemscope itemtype="http://schema.org/BlogPosting">
-
+<div class="entry" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
 	<div class="floatleft">
-		<span class="vcard hidden" itemprop="author"><span class="author fn nickname"><?php the_author()?></span></span>
+		<span class="hidden" itemprop="author"><?php the_author()?></span>
 		<meta itemprop="datePublished" content="<?php the_time('Y-m-d');?>">
-		<abbr class="entry-date published" title="<?php the_time('Y-m-d');?>"><?php echo the_time('Y 年 m 月 d 日');?></abbr>
+		<span class="entry-date"><?php echo the_time('Y 年 m 月 d 日');?></span>
 		<h3 class="entry-title" itemprop="headline"><?php if(get_the_title()):?>
 				<a href="<?php the_permalink();?>" title="<?php the_title();?>" rel="bookmark" itemprop="url"><?php the_title();?></a>
 			<?php else:?>
@@ -32,8 +31,6 @@
 		<span><?php comments_number('没有评论','1 条评论','% 条评论');?></span>
 		<meta itemprop="interactionCount" content="UserComments:<?php echo get_comments_number()?>" />
 		<?php edit_post_link('编辑','<span class="spliter"></span>','');?>
-
-
 	</div>
 	<div class="clearfix"></div>
 </div>

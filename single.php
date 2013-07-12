@@ -12,9 +12,9 @@
 				<a href="<?php the_permalink();?>" itemprop="url">（无标题）</a>
 			<?php endif;?>
 		</h2>
-		<span class="vcard hidden" itemprop="author"><span class="author fn nickname"><?php the_author()?></span></span>
+		<span class="hidden" itemprop="author"><?php the_author()?></span>
 		<meta itemprop="datePublished" content="<?php the_time('Y-m-d');?>">
-		<abbr class="entry-date published" title="<?php the_time('Y-m-d');?>"><?php echo the_time('Y 年 m 月 d 日');?></abbr>
+		<span class="entry-date"><?php echo the_time('Y 年 m 月 d 日');?></span>
 	</div>
 	<div class="entry-content" itemprop="articleBody">
 		<?php the_content('');?>

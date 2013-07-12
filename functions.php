@@ -26,7 +26,7 @@ function comment_mail_notify($comment_id) {
 	$spam_confirmed = $comment->comment_approved;
 	if ($parent_id != '' && $spam_confirmed != 'spam' && $parent_email != $comment_author_email  && $parent_email != $admin_email) {
 		$wp_email = $admin_email;
-		$to = trim(get_comment($parent_id)->comment_author) . '<' . trim(get_comment($parent_id)->comment_author_email) . '>';
+		$to = trim(get_comment($parent_id)->comment_author) . ' <' . trim(get_comment($parent_id)->comment_author_email) . '>';
 		$subject = '您在 ' . html_entity_decode(get_option('blogname'), ENT_QUOTES) . ' 的评论有了新回复';
 		$message = '<div style="font-family:\'Helvetica Neue\',Helvetica,Arial,\'Hiragino Sans GB\',\'Hiragino Sans GB W3\',\'Microsoft YaHei\',SimSun;font-size:13px;width:600px;margin:0 auto"><div style="background:#2AD;color:snow;padding:1em 2em;font-size:15px"><p><b>' . trim($parent_comment->comment_author) . '</b>，您好!</p></div><div style="background:#FAFAFA;border:1px solid #CCC;border-top:none"><div style="color:#333;padding:1em 2em;margin:0 1em"><p>您曾在《' . get_the_title($comment->comment_post_ID) . '》上发表评论：<blockquote style="border:1px dashed #CCC;padding:0 10px">' . trim(apply_filters('comment_text',convert_smilies($parent_comment->comment_content))) . '</blockquote><p><b>' . trim($comment->comment_author) . '</b> 回复您：</p><blockquote style="border:1px dashed #CCC;padding:0 10px">' . trim(apply_filters('comment_text',convert_smilies($comment->comment_content))) . '</blockquote><br/><p>您可以 <a href="' . htmlspecialchars(get_comment_link($parent_id)) . '" style="color:#2AD">查看文章和全部回复</a></p></div><div style="text-align:right;padding:1em 2em">欢迎您再次访问 <a href="' . get_option('home') . '" style="color:#2AD">' . $blogname . '</a></div></div></div>';
 		$from = 'From: ' . $blogname . " <$wp_email>";
@@ -57,7 +57,7 @@ function archives_list_SHe() {
 				$q = "SELECT ID, post_date, post_title, comment_count FROM $wpdb->posts p WHERE post_date LIKE '$thisyear-$thismonth-%' AND post_date AND post_status='publish' AND post_type='post' AND post_password='' ORDER BY post_date DESC";
 				$postresults = $wpdb->get_results($q);
 				if ($postresults) {
-					$text = sprintf('%d年%s月', $monthresult->year, zeroise($monthresult->month,2));
+					$text = sprintf('%d 年 %s 月', $monthresult->year, zeroise($monthresult->month,2));
 					$postcount = count($postresults);
 					$output .= '<li><span class="archives-yearmonth">' . $text . '（' . count($postresults) . ' 篇文章' . '）</span><ul class="archives-monthlisting">' . "\n";
 					foreach ($postresults as $postresult) {
@@ -70,7 +70,7 @@ function archives_list_SHe() {
 								$text = $postresult->ID;
 							}
 							$title_text = esc_html($text, 1);
-							$output .= '<li>' . mysql2date('d日', $postresult->post_date) . '：' . "<a href='$url' title='$title_text'>$text</a>";
+							$output .= '<li>' . mysql2date('d 日', $postresult->post_date) . '：' . "<a href='$url' title='$title_text'>$text</a>";
 							$output .= '（' . $postresult->comment_count . '）';
 							$output .= '</li>' . "\n";
 						}
@@ -85,6 +85,14 @@ function archives_list_SHe() {
 		}
 	}
 	echo $output;
+}
+
+//去除 microformats hatom
+add_filter('post_class', 'force_remove_hentry', 20);
+function force_remove_hentry($classes) {
+	if(($key = array_search('hentry', $classes)) !== false)
+		unset($classes[$key]);
+	return $classes;
 }
 
 
@@ -123,9 +131,16 @@ $GLOBALS['comment'] = $comment;?>
 
 <li <?php comment_class(); ?> id="li-comment-<?php comment_ID() ?>">
 	<div id="comment-<?php comment_ID()?>" itemprop="comment" itemscope itemtype="http://schema.org/Comment" <?php if (get_comment_type() == 'comment'):;?> class="this_comment"<?php endif; ?>>
-	<div class="comment-author vcard">
+	<div class="comment-author">
 		<?php echo get_avatar($comment,$size='32'); ?>
-		<div class="comment-meta"><span class="meta fn nickname" itemprop="author"><?php comment_author_link()?></span>
+		<div class="comment-meta">
+			<span class="meta">
+				<?php if(get_comment_author_link()):?>
+					<a href="<?php comment_author_url()?>" rel="nofollow external" class="url" itemprop="author"><?php comment_author()?></a>
+				<?php else:?>
+					<?php get_comment_author_link()?>
+				<?php endif;?>
+			</span>
 			<span class="meta date">
 				<a href="#comment-<?php comment_ID() ?>"><meta itemprop="commentTime" content="<?php comment_date('Y-m-d')?>"><?php comment_date('Y 年 m 月 d 日')?> <?php comment_time() ?></a>
 				<?php edit_comment_link('编辑','<span class="spliter"></span>',''); ?>
@@ -135,7 +150,7 @@ $GLOBALS['comment'] = $comment;?>
 			</span>
 		</div>
 	</div>
-		<div class="comment-content" itemprop="commentText"><?php comment_text() ?></div>
+	<div class="comment-content" itemprop="commentText"><?php comment_text() ?></div>
 	<?php if (get_comment_type() == 'comment'):;?>
 	<div class="reply">
 		<?php if ($depth == get_option('thread_comments_depth')) : ?>

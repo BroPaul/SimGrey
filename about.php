@@ -7,10 +7,11 @@ Template Name: 关于
 
 <?php if(have_posts()):?>
 <?php while(have_posts()):the_post();?>
-<div <?php post_class(); ?> id="post-<?php the_id();?>" itemprop="blogpost" itemscope itemtype="http://schema.org/BlogPosting">
+<div <?php post_class(); ?> id="post-<?php the_id();?>" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
 <div class="entry">
 	<div class="entry-header">
 		<h2 class="entry-title" itemprop="headline"><a href="<?php the_permalink();?>" title="<?php the_title();?>" rel="bookmark" itemprop="url"><?php the_title();?></a></h2>
+		<span class="hidden" itemprop="author"><?php the_author()?></span>
 	</div>
 	<div class="entry-content" itemprop="articleBody">
 		<blockquote><p>
@@ -19,17 +20,13 @@ Template Name: 关于
 			评论 <?php $count_comments = get_comment_count(); echo $count_comments['approved'];?> 条 。
 		</p></blockquote>
 		<?php the_content('');?>
-
 	</div>
 </div>
 <?php if(current_user_can('edit_post')):?>
 <div class="entry-meta">
 	<div class="floatleft">
 		<?php edit_post_link('编辑','','');?>
-
-
 	</div>
-
 	<div class="clearfix"></div>
 </div>
 <?php endif;?>

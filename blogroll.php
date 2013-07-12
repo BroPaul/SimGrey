@@ -1,6 +1,6 @@
 <?php get_header();?>
 <?/*
-Template Name: 没有评论的独立页面
+Template Name: 博客列表
 */
 ?>
 
@@ -9,10 +9,12 @@ Template Name: 没有评论的独立页面
 <div <?php post_class(); ?> id="post-<?php the_id();?>" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
 <div class="entry">
 	<div class="entry-header">
-		<h2 class="entry-title" itemprop="headline"><a href="<?php the_permalink();?>" title="<?php the_title();?>" rel="bookmark" itemprop="url"><?php the_title();?></a></h2>
-		<span class="hidden" itemprop="author"><?php the_author()?></span>
+		<h2 class="entry-title" itemprop="headline"><a href="<?php the_permalink();?>" title="<?php the_title();?>" rel="bookmark"><?php the_title();?></a></h2>
 	</div>
-	<div class="entry-content" itemprop="articleBody">
+	<div class="entry-content">
+		<ul class="xoxo blogroll">
+		<?php wp_list_bookmarks('orderby=id&show_description=true&title_li=0&categorize=0&before=<li itemscope itemtype="http://schema.org/Person"><span class="bglink" itemprop="name">&between=</span><span class="bgdesc" itemprop="description">&after=</span></li>')?>
+		</ul>
 		<?php the_content('');?>
 	</div>
 </div>

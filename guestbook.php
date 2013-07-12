@@ -7,10 +7,10 @@ Template Name: 留言板，只有评论会显示，如果你想和关于放到�
 
 <?php if(have_posts()):?>
 <?php while(have_posts()):the_post();?>
-<div class="post-<?php the_id();?> page type-page status-<?php echo get_post_status();?> guestbook" id="post-<?php the_id();?>">
+<div class="post-<?php the_id();?> page type-page status-<?php echo get_post_status();?> guestbook" id="post-<?php the_id();?>" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
 <div class="entry">
 	<div class="entry-header">
-		<h2 class="entry-title"><a href="<?php the_permalink();?>" title="<?php the_title();?>" rel="bookmark" itemprop="url"><?php the_title();?></a></h2>
+		<h2 class="entry-title" itemprop="headline"><a href="<?php the_permalink();?>" title="<?php the_title();?>" rel="bookmark" itemprop="url"><?php the_title();?></a></h2>
 	</div>
 </div>
 <?php comments_template();?>

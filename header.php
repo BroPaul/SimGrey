@@ -39,4 +39,4 @@
 </div>
 <!--/header-->
 <div id="container">
-	<div id="main" role="main" class="hfeed site-content">
+	<div id="main" role="main" class="site-content">

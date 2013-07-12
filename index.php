@@ -4,7 +4,7 @@
 <?php if(have_posts()):?>
 <?php while(have_posts()):the_post();?>
 <?php if(is_sticky() && $paged<2):?>
-<div <?php post_class(); ?> id="post-<?php the_id();?>" itemprop="blogpost" itemscope itemtype="http://schema.org/BlogPosting">
+<div <?php post_class(); ?> id="post-<?php the_id();?>" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
 <div class="entry">
 	<div class="entry-header">
 		<h2 class="entry-title" itemprop="headline">
@@ -14,15 +14,15 @@
 				<a href="<?php the_permalink();?>" itemprop="url">（无标题）</a>
 			<?php endif;?>
 		</h2>
-		<span class="vcard hidden" itemprop="author"><span class="author fn nickname"><?php the_author()?></span></span>
+		<span class="hidden" itemprop="author"><?php the_author()?></span>
 		<meta itemprop="datePublished" content="<?php the_time('Y-m-d');?>">
-		<abbr class="entry-date published hidden" title="<?php the_time('Y-m-d');?>"><?php echo the_time('Y 年 m 月 d 日');?></abbr>
+		<span class="entry-date hidden"><?php echo the_time('Y 年 m 月 d 日');?></span>
 		<meta itemprop="interactionCount" content="UserComments:<?php echo get_comments_number()?>" />
 	</div>
 </div>
 </div>
 <?php else:?>
-<div <?php post_class(); ?> id="post-<?php the_id();?>" itemprop="blogpost" itemscope itemtype="http://schema.org/BlogPosting">
+<div <?php post_class(); ?> id="post-<?php the_id();?>" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
 <div class="entry">
 	<div class="entry-header">
 		<h2 class="entry-title" itemprop="headline">
@@ -32,11 +32,11 @@
 				<a href="<?php the_permalink();?>" itemprop="url">（无标题）</a>
 			<?php endif;?>
 		</h2>
-		<span class="vcard hidden" itemprop="author"><span class="author fn nickname"><?php the_author()?></span></span>
+		<span class="hidden" itemprop="author"><?php the_author()?></span>
 		<meta itemprop="datePublished" content="<?php the_time('Y-m-d');?>">
-		<abbr class="entry-date published" title="<?php the_time('Y-m-d');?>"><?php echo the_time('Y 年 m 月 d 日');?></abbr>
+		<span class="entry-date"><?php echo the_time('Y 年 m 月 d 日');?></span>
 	</div>
-	<div class="entry-content">
+	<div class="entry-content" itemprop="description">
 		<?php the_content('阅读全文 &#187;');?>
 		<div class="clearfix"></div>
 	</div>

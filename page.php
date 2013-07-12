@@ -2,11 +2,11 @@
 
 <?php if(have_posts()):?>
 <?php while(have_posts()):the_post();?>
-<div <?php post_class(); ?> id="post-<?php the_id();?>" itemprop="blogpost" itemscope itemtype="http://schema.org/BlogPosting">
+<div <?php post_class(); ?> id="post-<?php the_id();?>" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
 <div class="entry">
 	<div class="entry-header">
 		<h2 class="entry-title" itemprop="headline"><a href="<?php the_permalink();?>" title="<?php the_title();?>" rel="bookmark" itemprop="url"><?php the_title();?></a></h2>
-		<span class="vcard hidden" itemprop="author"><span class="author fn nickname"><?php the_author()?></span></span>
+		<span class="hidden" itemprop="author"><?php the_author()?></span>
 	</div>
 	<div class="entry-content" itemprop="articleBody">
 		<?php the_content('');?>
