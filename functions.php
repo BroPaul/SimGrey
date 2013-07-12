@@ -122,18 +122,20 @@ function f_comment($comment, $args, $depth) {
 $GLOBALS['comment'] = $comment;?>
 
 <li <?php comment_class(); ?> id="li-comment-<?php comment_ID() ?>">
-	<div id="comment-<?php comment_ID()?>"<?php if (get_comment_type() == 'comment'):;?> class="this_comment"<?php endif; ?>>
+	<div id="comment-<?php comment_ID()?>" itemprop="comment" itemscope itemtype="http://schema.org/Comment" <?php if (get_comment_type() == 'comment'):;?> class="this_comment"<?php endif; ?>>
 	<div class="comment-author vcard">
 		<?php echo get_avatar($comment,$size='32'); ?>
-		<div class="comment-meta"><span class="meta fn nickname"><?php comment_author_link()?></span><span class="meta date">
-		<a href="#comment-<?php comment_ID() ?>"><?php comment_date('Y年m月d日') ?> <?php comment_time() ?></a>
-		<?php edit_comment_link('编辑','<span class="spliter"></span>',''); ?>
-		<?php if ($comment->comment_approved == '0') : ?>
-		<em>评论正在等待审核...</em>
-		<?php endif; ?>
-		</span></div>
+		<div class="comment-meta"><span class="meta fn nickname" itemprop="author"><?php comment_author_link()?></span>
+			<span class="meta date">
+				<a href="#comment-<?php comment_ID() ?>"><meta itemprop="commentTime" content="<?php comment_date('Y-m-d')?>"><?php comment_date('Y 年 m 月 d 日')?> <?php comment_time() ?></a>
+				<?php edit_comment_link('编辑','<span class="spliter"></span>',''); ?>
+				<?php if ($comment->comment_approved == '0') : ?>
+					<em>评论正在等待审核...</em>
+				<?php endif; ?>
+			</span>
+		</div>
 	</div>
-		<div class="comment-content"><?php comment_text() ?></div>
+		<div class="comment-content" itemprop="commentText"><?php comment_text() ?></div>
 	<?php if (get_comment_type() == 'comment'):;?>
 	<div class="reply">
 		<?php if ($depth == get_option('thread_comments_depth')) : ?>

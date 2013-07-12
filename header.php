@@ -18,13 +18,13 @@
 <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/javascript.js"></script>
 <?php wp_head()?>
 </head>
-<body <?php body_class()?>>
-<div id="header" role="banner" class="site-header">
+<body <?php body_class()?> itemscope itemtype="http://schema.org/Blog">
 <!--[if IE 6]><div id="ie6">您还在使用 Internet Explorer 6 吗？！建议您选用更快、更安全的浏览器，如 Chrome、Firefox，或升级到最新版本的 Internet Explorer ！</div><![endif]-->
+<div id="header" role="banner" class="site-header">
 	<div id="blog">
-		<a href="<?php echo $blogOption['feed']?>" id="feed" title="订阅 <?php bloginfo('name')?>" rel="external">RSS</a>
-		<h1 class="site-title"><a href="<?php bloginfo('url')?>/" title="<?php bloginfo('name')?>"><?php bloginfo('name')?></a></h1>
-		<p class="site-description"><?php bloginfo('description')?></p>
+		<a href="http://xiaoxia.de/feed/" id="feed" title="点击进入 Feed 订阅页面">RSS</a>
+		<h1 class="site-title" itemprop="name"><a href="<?php bloginfo('url')?>/" title="<?php bloginfo('name')?>" itemprop="url"><?php bloginfo('name')?></a></h1>
+		<p class="site-description" itemprop="description"><?php bloginfo('description')?></p>
 		<form method="get" id="search" action="<?php bloginfo('url')?>/">
 			<input type="text" name="s" title="搜索..."/>
 		</form>
@@ -32,11 +32,7 @@
 	<div id="nav" class="site-navigation">
 		<ul role="navigation" class="nav-menu">
 			<li class="page_item <?php if(is_home()){echo 'current_page_item';}?>"><a href="<?php bloginfo('url')?>">首页</a></li>
-			<?php if($blogOption['nav'] == '1'):?>
-			<?php wp_nav_menu(array('container'=>'','items_wrap'=>'%3$s','fallback_cb'=>false,'depth'=>1))?>
-			<?php else:?>
-			<?php wp_list_pages('depth=0&title_li=');?>
-			<?php endif;?>
+			<?php wp_list_pages('depth=0&title_li=')?>
 		</ul>
 	</div>
 	<div class="clearfix"></div>
