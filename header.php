@@ -8,7 +8,7 @@
 <?php if(get_bloginfo('description') && is_home() && $paged<2):?>
 <meta name="description" content="<?php bloginfo('description')?>" />
 <?php endif;?>
-<title><?php wp_title('|', true, 'right');?><?php bloginfo('name');?><?php if($paged>1)echo " - 第" . $paged . "页";?></title>
+<title><?php wp_title('|', true, 'right');?><?php bloginfo('name');?><?php if($paged>1)echo " - 第 " . $paged . " 页";?></title>
 <link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/css/style<?php simgrey_css()?>.css" type="text/css" media="screen" />
 <!--[if lt IE 8]><link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/css/ie.css" type="text/css" media="screen" /><![endif]-->
 <link rel="profile" href="http://gmpg.org/xfn/11" />
@@ -22,7 +22,7 @@
 <!--[if IE 6]><div id="ie6">您还在使用 Internet Explorer 6 吗？！建议您选用更快、更安全的浏览器，如 Chrome、Firefox，或升级到最新版本的 Internet Explorer ！</div><![endif]-->
 <div id="header" role="banner" class="site-header">
 	<div id="blog">
-		<a href="http://xiaoxia.de/feed/" id="feed" title="点击进入 Feed 订阅页面">RSS</a>
+		<a href="<?php echo $blogOption['feed']?>" id="feed" title="订阅 <?php bloginfo('name')?>">RSS</a>
 		<h1 class="site-title" itemprop="name"><a href="<?php bloginfo('url')?>/" title="<?php bloginfo('name')?>" itemprop="url"><?php bloginfo('name')?></a></h1>
 		<p class="site-description" itemprop="description"><?php bloginfo('description')?></p>
 		<form method="get" id="search" action="<?php bloginfo('url')?>/">

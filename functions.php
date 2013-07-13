@@ -135,11 +135,15 @@ $GLOBALS['comment'] = $comment;?>
 		<?php echo get_avatar($comment,$size='32'); ?>
 		<div class="comment-meta">
 			<span class="meta">
-				<?php if(get_comment_author_link()):?>
-					<a href="<?php comment_author_url()?>" rel="nofollow external" class="url" itemprop="author"><?php comment_author()?></a>
-				<?php else:?>
-					<?php get_comment_author_link()?>
-				<?php endif;?>
+			<?php
+				$url = get_comment_author_url( $comment_ID );
+				$author = get_comment_author( $comment_ID );
+				if(empty($url) || 'http://' == $url){
+					echo $author;
+				}else{
+					echo "<a href='$url' rel='external nofollow' class='url' itemprop='author'>$author</a>";
+				}
+			?>
 			</span>
 			<span class="meta date">
 				<a href="#comment-<?php comment_ID() ?>"><meta itemprop="commentTime" content="<?php comment_date('Y-m-d')?>"><?php comment_date('Y 年 m 月 d 日')?> <?php comment_time() ?></a>
@@ -178,7 +182,7 @@ class SimGreyOptions {
 	$options['mail_notify'] = '1';
 	$options['code'] = '';
 	$options['nav'] = '0';
-	$options['feed'] = get_bloginfo('url') . '/feed/';
+	$options['feed'] = get_bloginfo('rss2_url');
 	$options['mail_address'] = get_option('admin_email');
 
 			update_option('simgrey_options', $options);
@@ -216,7 +220,7 @@ class SimGreyOptions {
 				$options['mail_address'] = get_option('admin_email');
 			}
 			if(empty($_POST['feed'])){
-				$options['feed'] = get_bloginfo('url') . '/feed/';
+				$options['feed'] = get_bloginfo('rss2_url');
 			}else{
 				$options['feed'] = $_POST['feed'];
 			}
