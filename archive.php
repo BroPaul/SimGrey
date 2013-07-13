@@ -1,6 +1,6 @@
 <?php get_header();?>
 
-<?php $blogOption = get_option('simgrey_options');?>
+<?php $blogOption = get_option('SimGrey_options');?>
 <?php $posts = query_posts($query_string . '&orderby=date&showposts=' . $blogOption['show_post']);?>
 
 <div class="page archive">

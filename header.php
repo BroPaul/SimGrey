@@ -1,4 +1,4 @@
-<?php $blogOption = get_option('simgrey_options');?>
+<?php $blogOption = get_option('SimGrey_options');?>
 <!DOCTYPE html>
 <html dir="ltr" lang="zh-CN">
 <head>

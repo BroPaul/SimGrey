@@ -22,7 +22,7 @@
 <!--/footer-->
 <?php wp_footer();?>
 <?php if(!is_user_logged_in()):?>
-	<?php $blogOption = get_option('simgrey_options');?>
+	<?php $blogOption = get_option('SimGrey_options');?>
 	<div class="hidden"><?php echo stripslashes($blogOption['code'])?></div>
 	<!--放置在 div.hidden 的代码且不会被显示，适合放置统计代码（登入用户不执行该代码）-->
 <?php endif;?>

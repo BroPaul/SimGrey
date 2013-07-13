@@ -15,7 +15,7 @@ if ('POST' != $_SERVER['REQUEST_METHOD']) {
 /** Sets up the WordPress Environment. */
 require(dirname(__FILE__) . '/../../../wp-load.php'); // 此 comments-ajax.php 位於主題資料夾,所以位置已不同
 
-$options = get_option('simgrey_options');// 获取主题设置
+$options = get_option('SimGrey_options');// 获取主题设置
 
 nocache_headers();
 

@@ -14,7 +14,7 @@ function simgrey_css(){
 
 //邮件回复评论
 function comment_mail_notify($comment_id) {
-	$options = get_option('simgrey_options');
+	$options = get_option('SimGrey_options');
 	$blogname = trim(html_entity_decode(get_option('blogname'), ENT_QUOTES));
 	$admin_email = $options['mail_address'];
 	$comment = get_comment($comment_id);
@@ -34,7 +34,7 @@ function comment_mail_notify($comment_id) {
 		wp_mail( $to, $subject, $message, $headers );
 	}
 }
-$options = get_option('simgrey_options');
+$options = get_option('SimGrey_options');
 if($options['mail_notify'] == '1'){
 	add_action('comment_post', 'comment_mail_notify');
 }
@@ -174,7 +174,7 @@ class SimGreyOptions {
 	/* -- 获取选项组 -- */
 	function getOptions() {
 
-		$options = get_option('simgrey_options');
+		$options = get_option('SimGrey_options');
 		// 如果数据库中不存在该选项组, 设定这些选项的默认值, 并将它们插入数据库
 		if (!is_array($options)) {
 	$options['show_post'] = '-1';
@@ -185,7 +185,7 @@ class SimGreyOptions {
 	$options['feed'] = get_bloginfo('rss2_url');
 	$options['mail_address'] = get_option('admin_email');
 
-			update_option('simgrey_options', $options);
+			update_option('SimGrey_options', $options);
 		}
 		// 返回选项组
 		return $options;
@@ -196,7 +196,7 @@ class SimGreyOptions {
 
 		if(isset($_POST['simgrey_save'])) {
 
-			$options = simgreyOptions::getOptions();
+			$options = SimGreyOptions::getOptions();
 			$options['show_post'] = $_POST['show_post'];
 			$options['code'] = $_POST['code'];
 			if(empty($_POST['need_chinese'])) {
@@ -224,18 +224,18 @@ class SimGreyOptions {
 			}else{
 				$options['feed'] = $_POST['feed'];
 			}
-			update_option('simgrey_options', $options);
+			update_option('SimGrey_options', $options);
 
 		} else {
-			simgreyOptions::getOptions();
+			SimGreyOptions::getOptions();
 		}
 
-		add_theme_page("SimGrey 主题设置", "SimGrey 主题设置", 'edit_themes', basename(__FILE__), array('simgreyOptions', 'display'));
+		add_theme_page("SimGrey 主题设置", "SimGrey 主题设置", 'edit_themes', basename(__FILE__), array('SimGreyOptions', 'display'));
 	}
 
 	/* -- 标签页 -- */
 	function display() {
-		$options = simgreyOptions::getOptions();
+		$options = SimGreyOptions::getOptions();
 ?>
 <style>
 .wrap,.wrap h2{font-size:12px;line-height:1.5}
@@ -303,9 +303,9 @@ class SimGreyOptions {
 }
 
 //登记初始化方法
-add_action('admin_menu', array('simgreyOptions', 'init'));
+add_action('admin_menu', array('SimGreyOptions', 'init'));
 
 //引用
-$blogOption = get_option('simgrey_options');
+$blogOption = get_option('SimGrey_options');
 
 ?>
