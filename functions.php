@@ -1,4 +1,13 @@
 <?php
+
+//检测主题更新
+require_once(TEMPLATEPATH . '/update/checker.php'); 
+$wpdaxue_update_checker = new ThemeUpdateChecker(
+	'SimGrey',
+	'http://neverweep.googlecode.com/svn/trunk/themes/simgrey-public/update/info.json'
+);
+
+
 //get CSS
 function simgrey_css(){
 	if(is_active_sidebar('sidebar-primary')){
