@@ -35,15 +35,15 @@ if ( comments_open() ) {?>
 		<div>欢迎回来， <a href="<?php echo get_option('siteurl');?>/wp-admin/profile.php"><?php echo $user_identity;?></a>！&nbsp;(<a href="<?php echo wp_logout_url(get_permalink());?>" title="登出该账户"> 注销 </a>)</div>
 		<?php else : ?>
 		<div>
-			<input type="text" name="author" id="author" onkeypress="return noenter(event)" value="<?php echo esc_attr($comment_author);?>" size="26" tabindex="1"/>
+			<input type="text" name="author" id="author" value="<?php echo esc_attr($comment_author);?>" size="26" tabindex="1"/>
 			<label for="author">昵称<?php if ($req) echo " *";?></label>
 		</div>
 		<div>
-			<input type="text" name="email" id="email" onkeypress="return noenter(event)" value="<?php echo esc_attr($comment_author_email);?>" size="26" tabindex="2" />
+			<input type="text" name="email" id="email" value="<?php echo esc_attr($comment_author_email);?>" size="26" tabindex="2" />
 			<label for="email">邮箱<?php if ($req) echo " *";?></label>
 		</div>
 		<div>
-			<input type="text" name="url" id="url" onkeypress="return noenter(event)" value="<?php echo esc_attr($comment_author_url);?>" size="26" tabindex="3" />
+			<input type="text" name="url" id="url" value="<?php echo esc_attr($comment_author_url);?>" size="26" tabindex="3" />
 			<label for="url">网址</label>
 		</div>
 		<?php endif;?>

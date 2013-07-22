@@ -172,17 +172,23 @@ while ($tmp_c->comment_parent != 0) {
 ?>
 <li <?php comment_class(); ?> id="li-comment-<?php comment_ID() ?>">
 <div id="comment-<?php comment_ID(); ?>">
-	<div class="comment-author vcard">
+	<div class="comment-author">
 		<?php echo get_avatar($comment,$size='32'); ?>
-		<div class="comment-meta commentmetadata"><span class="meta fn nickname"><?php comment_author_link()?></span><span class="meta date"><a href="#comment-<?php comment_ID() ?>" title="" rel="nofollow">
-		<?php comment_date('Y年m月d日') ?>
-		<?php comment_time() ?>
-		</a>
-		<?php edit_comment_link('编辑','<span class="spliter"></span>',''); ?>
-		<?php if ($comment->comment_approved == '0') : ?>
-		<em>评论正在等待审核...</em>
-		<?php endif; ?>
-		</span></div>
+		<div class="comment-meta">
+			<span class="meta">
+				<?php comment_author_link()?>
+			</span>
+			<span class="meta date">
+				<a href="#comment-<?php comment_ID() ?>" rel="nofollow">
+					<?php comment_date('Y 年 m 月 d 日') ?>
+					<?php comment_time() ?>
+				</a>
+				<?php edit_comment_link('编辑','<span class="spliter"></span>',''); ?>
+				<?php if ($comment->comment_approved == '0') : ?>
+					<em>评论正在等待审核...</em>
+				<?php endif; ?>
+			</span>
+		</div>
 	</div>
 	<div class="comment-content"><?php comment_text() ?></div>
 </div>

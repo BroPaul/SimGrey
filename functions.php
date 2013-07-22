@@ -155,7 +155,11 @@ $GLOBALS['comment'] = $comment;?>
 			?>
 			</span>
 			<span class="meta date">
-				<a href="#comment-<?php comment_ID() ?>"><meta itemprop="commentTime" content="<?php comment_date('Y-m-d')?>"><?php comment_date('Y 年 m 月 d 日')?> <?php comment_time() ?></a>
+				<a href="#comment-<?php comment_ID() ?>">
+					<meta itemprop="commentTime" content="<?php comment_date('Y-m-d')?>">
+					<?php comment_date('Y 年 m 月 d 日')?>
+					<?php comment_time() ?>
+				</a>
 				<?php edit_comment_link('编辑','<span class="spliter"></span>',''); ?>
 				<?php if ($comment->comment_approved == '0') : ?>
 					<em>评论正在等待审核...</em>
