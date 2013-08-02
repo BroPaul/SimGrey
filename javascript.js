@@ -23,11 +23,6 @@ $('.entry-content a[href^="#"],.single .comments-link a[href*="#"],.page .commen
 	$('html, body').animate({ scrollTop: $(_rel).offset().top - 20}, 400);
 	return false;
 });
-//Hash
-if(window.location.hash && $(window.location.hash).length>0){
-	var locationHash = window.location.hash;
-	$('html, body').animate({ scrollTop: $(locationHash).offset().top - 0}, 800);
-};
 //静态文章归档
 jQuery(document).ready(function(){
 	$('#archives ul li ul.archives-monthlisting').hide();
