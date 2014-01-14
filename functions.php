@@ -148,7 +148,7 @@ $GLOBALS['comment'] = $comment;?>
 				$url = get_comment_author_url( $comment_ID );
 				$author = get_comment_author( $comment_ID );
 				if(empty($url) || 'http://' == $url){
-					echo $author;
+					echo "<span itemprop='author'>$author</span>";
 				}else{
 					echo "<a href='$url' rel='external nofollow' class='url' itemprop='author'>$author</a>";
 				}
