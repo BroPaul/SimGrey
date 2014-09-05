@@ -20,8 +20,9 @@ pre{overflow-x:auto;margin:1em 0;width:95%;padding:1em;word-wrap:normal}
 kbd{padding:0 2px;border-right-width:2px;border-bottom-width:3px;border-left-width:1px;background:#F9F9F9}
 code{line-height:1em;word-break:break-all;padding:0 2px}
 small,small a{font-size:11px}
-q,blockquote{border:1px dashed #DDD;padding:0.5em 1.5em;margin:2em 1em;position:relative}
-q::before,blockquote::before{content:"”";font-size:100px;position:absolute;top:-50px;right:0;color:#E5E5E5}
+q,blockquote{border-left:2px solid #E5E5E5;border-right:2px solid #E5E5E5;padding:0.5em 1.5em;margin:2em 1em;position:relative}
+q::before,blockquote::before{content:open-quote;font-size:50px;position:absolute;top:-0.5em;left:-30px;color:#2AD}
+q::after,blockquote::after{content:close-quote;font-size:50px;position:absolute;bottom:-1em;right:-30px;color:#2AD}
 del{color:#999}
 a{color:#2AD;text-decoration:none;margin:0 0.4em}
 a:hover{text-decoration:underline;color:#D66}
