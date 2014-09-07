@@ -99,7 +99,7 @@ a.more-link:hover{background:#2AD;color:snow;text-decoration:none}
 .pinned h2{padding:0;margin:0}
 .entry-meta,.entry-nav{padding:15px;margin:0 20px;line-height:25px}
 .entry-meta{border-top:1px solid #DDD;margin-bottom:3em}
-.comments-link{border-top:3px solid #AAA;margin-top:-17px;padding-top:14px}
+.comments-link{margin-top:-17px;padding-top:14px;border-top:3px solid #AAA;width:6em;text-align:center}
 /* 评论 */
 #comment-template{padding:20px}
 #comment-template input:hover,textarea:hover,#comment-template input:focus,textarea:focus{border-color:#6BC5E0}
